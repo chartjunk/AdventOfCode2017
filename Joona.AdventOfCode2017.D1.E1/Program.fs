@@ -2,7 +2,7 @@
 
 let rec sumDubs (l:List<Char>) = 
     match l with 
-    | o when o.Tail.IsEmpty -> 0 
+    | _::[] -> 0 
     | h::t when h.Equals t.Head -> sumDubs t + int h - int '0' 
     | _::t -> sumDubs t
 
