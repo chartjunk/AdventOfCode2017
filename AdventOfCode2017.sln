@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Joona.AdventOfCode2017.D1.E1", "Joona.AdventOfCode2017.D1.E1\Joona.AdventOfCode2017.D1.E1.fsproj", "{69E242B1-D128-486F-8748-EDA1391DF17D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69E242B1-D128-486F-8748-EDA1391DF17D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69E242B1-D128-486F-8748-EDA1391DF17D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69E242B1-D128-486F-8748-EDA1391DF17D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69E242B1-D128-486F-8748-EDA1391DF17D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D760935B-57D6-4DB0-BC66-6F03CB3E8F7A}
+	EndGlobalSection
+EndGlobal
