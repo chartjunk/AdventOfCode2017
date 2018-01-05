@@ -1,14 +1,17 @@
 ﻿open System
 open DubsSumming
 
+let rec foldDubs = function
+    | [h::t; i::u] when h=i -> 2*h + foldDubs [t;u]
+    | [_::[]; _] -> 0
+    | [_::t; _::u] -> foldDubs [t;u]
+
 [<EntryPoint>]
 let main argv =
     argv.[0] 
     |> explodeToInt 
     |> List.splitInto 2
-    |> fun [a; b;] -> List.zip a b
-    |> List.map (function (a,b) when a=b -> 2*a | _ -> 0)
-    |> List.sum
+    |> foldDubs
     |> printfn "%i"
     Console.ReadKey() |> ignore
     0
