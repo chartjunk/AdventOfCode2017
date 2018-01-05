@@ -6,8 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="DubsSumming.fs" />
     <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Joona.AdventOfCode2017.D1.E1\Joona.AdventOfCode2017.D1.E1.fsproj" />
   </ItemGroup>
 
 </Project>
