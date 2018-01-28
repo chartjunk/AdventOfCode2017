@@ -5,7 +5,7 @@ open Checksum
 let cartesian xs = 
     xs |> Seq.collect(fun y -> xs |> Seq.map (fun x -> x, y))
 
-let distCartesian = 
+let divideRow = 
     Seq.indexed
     >> cartesian
     >> Seq.pick(function
@@ -14,5 +14,5 @@ let distCartesian =
 
 [<EntryPoint; STAThread>]
 let main argv =
-    sheetToChecksum distCartesian >> string |> rotateClipboard
+    sheetToChecksum divideRow >> string |> rotateClipboard
     0
