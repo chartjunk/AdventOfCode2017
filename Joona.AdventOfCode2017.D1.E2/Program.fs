@@ -2,9 +2,9 @@
 open DubsSumming
 
 let rec foldDubs = function
-    | [h::t; i::u] when h=i -> 2*h + foldDubs [t;u]
-    | [_::[]; _] -> 0
-    | [_::t; _::u] -> foldDubs [t;u]
+    | [h::t; i::u] -> foldDubs [t;u] + (
+        match h,i with | a,b when a=b -> 2*a | _ -> 0) 
+    | _ -> 0
 
 [<EntryPoint>]
 let main argv =

@@ -5,7 +5,11 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Joona.AdventOfCode2017.D1.E1", "Joona.AdventOfCode2017.D1.E1\Joona.AdventOfCode2017.D1.E1.fsproj", "{69E242B1-D128-486F-8748-EDA1391DF17D}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Joona.AdventOfCode2017.D1.E2", "Joona.AdventOfCode2017.D1.E2\Joona.AdventOfCode2017.D1.E2.fsproj", "{60643A69-580F-481A-9AFD-0F8AAE696EE9}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Joona.AdventOfCode2017.D1.E2", "Joona.AdventOfCode2017.D1.E2\Joona.AdventOfCode2017.D1.E2.fsproj", "{60643A69-580F-481A-9AFD-0F8AAE696EE9}"
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Joona.AdventOfCode2017.D2.E1", "Joona.AdventOfCode2017.D2.E1\Joona.AdventOfCode2017.D2.E1.fsproj", "{B5EDBAFB-4A58-40F2-8E0B-5DE37869DBA2}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Joona.AdventOfCode2017.D2.E2", "Joona.AdventOfCode2017.D2.E2\Joona.AdventOfCode2017.D2.E2.fsproj", "{A902DC26-AE6A-4641-BB75-9A548E8676FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{60643A69-580F-481A-9AFD-0F8AAE696EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60643A69-580F-481A-9AFD-0F8AAE696EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60643A69-580F-481A-9AFD-0F8AAE696EE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5EDBAFB-4A58-40F2-8E0B-5DE37869DBA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5EDBAFB-4A58-40F2-8E0B-5DE37869DBA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5EDBAFB-4A58-40F2-8E0B-5DE37869DBA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5EDBAFB-4A58-40F2-8E0B-5DE37869DBA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A902DC26-AE6A-4641-BB75-9A548E8676FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A902DC26-AE6A-4641-BB75-9A548E8676FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A902DC26-AE6A-4641-BB75-9A548E8676FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A902DC26-AE6A-4641-BB75-9A548E8676FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
