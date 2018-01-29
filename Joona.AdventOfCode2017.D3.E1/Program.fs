@@ -6,10 +6,10 @@ let getLevelCenters l = seq { for c in [0..3] |> List.map float -> (l*2.+1.)**2.
 let getClosestFrom y = Seq.minBy(fun x -> abs(x-y))
 let getManhattanDistance point =
     let level = getLevel point
-    let closest = getClosestFrom point (getLevelCenters level)
+    let closest = getLevelCenters level |> getClosestFrom point
     level + abs(point - closest)
 
 [<EntryPoint; STAThread>]
 let main argv =
-    (float >> getManhattanDistance >> string) |> rotateClipboard
+    float >> getManhattanDistance >> string |> rotateClipboard
     0
