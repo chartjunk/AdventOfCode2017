@@ -46,7 +46,7 @@ let getFirst condition =
     let rec values prev prevPrev prevNum =
         seq {
             let l = prevNum+1
-            let prevs = prevPrev @ prev        
+            let pvs = prevPrev @ prev        
             let next = 
                 match l with
                 // Treat first level as a special case
@@ -54,7 +54,7 @@ let getFirst condition =
                 | _ -> 
                     getLevelPoints
                     // Sum prev level neighbors
-                    >> Seq.map(fw (fun p -> prevs |> Seq.filter(fun pv -> p.pn |> Seq.contains pv.ix) |> Seq.sumBy(fun pv -> pv.v)))
+                    >> Seq.map(fw (fun p -> pvs |> Seq.filter(fun pv -> p.pn |> Seq.contains pv.ix) |> Seq.sumBy(fun pv -> pv.v)))
                     // Accumulate same level neighbor = previous point
                     >> Seq.mapFold(fun (m2, m1) (p, pnsum) -> let vn = pnsum+m1+m2*p.m2coef in ({p with v=vn},(m1,vn))) (
                         // Init accumulation with the last two items from prev
