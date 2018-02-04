@@ -25,9 +25,9 @@ let getLevelPoints l =
 
     let getPrevNeighbor i = 
         i-1 - ([((=),1);((<),0)] |> List.pick(fun (op, off) -> match norm i with
-        | np when op np side1 -> Some (prevSide2*2+prevSide1*2+off)
-        | np when op np (side1*2) -> Some (side1+prevSide2*2+prevSide1+off)
-        | np when op np (side1*2+side2) -> Some (side1*2+prevSide2*2+off)
+        | np when op np side1             -> Some (prevSide2*2+prevSide1*2+off)
+        | np when op np (side1*2)         -> Some (side1+prevSide2*2+prevSide1+off)
+        | np when op np (side1*2+side2)   -> Some (side1*2+prevSide2*2+off)
         | np when op np (side1*2+side2*2) -> Some (side2+side1*2+prevSide2+off)
         | _ -> None))
 
