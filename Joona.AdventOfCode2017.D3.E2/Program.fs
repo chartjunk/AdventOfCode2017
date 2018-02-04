@@ -54,11 +54,11 @@ let getFirst condition =
                 | _ -> 
                     getLevelPoints
                     // Sum prev level neighbors
-                    >> Seq.map(fw (fun p -> pvs |> Seq.filter(fun pv -> p.pn |> Seq.contains pv.ix) |> Seq.sumBy(fun pv -> pv.v)))
+                    >> Seq.map(fun p -> p, pvs |> Seq.filter(fun pv -> p.pn |> Seq.contains pv.ix) |> Seq.sumBy(fun pv -> pv.v))
                     // Accumulate same level neighbor = previous point
                     >> Seq.mapFold(fun (m2, m1) (p, pnsum) -> let vn = pnsum+m1+m2*p.m2coef in ({p with v=vn},(m1,vn))) (
                         // Init accumulation with the last two items from prev
-                        prev |> List.map (fun p -> p.v) |> (@)[0;0] |> List.rev |> (fun v -> Tuple.Create(v.[0], v.[1])))
+                        let v = prev |> List.map (fun p -> p.v) |> (@)[0;0] |> List.rev in (v.[0], v.[1]))
                     >> fst <| l
 
             yield! next
