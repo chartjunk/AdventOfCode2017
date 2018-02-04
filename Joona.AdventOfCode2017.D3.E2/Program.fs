@@ -8,7 +8,7 @@ let getLast i s = Seq.item (-1*i + Seq.length s) s
 let getLevelMax l = 4.*l**2.+2.*l+1.
 let getLevelMin = (+)(-1.) >> getLevelMax >> (+)1.
 
-type Point = {ix:int; pn:seq<int>; v:int; takeM2:bool}
+type Point = {ix:int; pn:seq<int>; v:int; m2coef:0}
 let getPointValue p = p.v
 
 let getLevelPoints l =
@@ -40,10 +40,10 @@ let getLevelPoints l =
 
     seq{min..max}
     |> Seq.map (fw getPrevNeighbor)
-    |> Seq.map (fun (i,n) -> (i,n,{ix=i;pn=[];v=0;takeM2=false}))
+    |> Seq.map (fun (i,n) -> (i,n,{ix=i;pn=[];v=0;m2coef=0}))
     |> Seq.map (
         function
-        | i,n,p when i=min || isCorner(i-1) -> {p with pn=[n;n+1]; takeM2=true}
+        | i,n,p when i=min || isCorner(i-1) -> {p with pn=[n;n+1]; m2coef=1}
         | i,n,p when isCorner i             -> {p with pn=[n]}
         | i,n,p when isCorner(i+1)          -> {p with pn=[n-1;n]}
         | i,n,p                             -> {p with pn=[n-1;n;n+1]})
@@ -52,26 +52,20 @@ let getFirstGreaterThan comparisonValue =
 
     let rec values prev prevPrev prevNum =
         seq {
-
             let l = prevNum+1
-            let prevs = prevPrev @ prev
-            
+            let prevs = prevPrev @ prev        
             let next = 
                 match l with
                 // Treat first level as a special case
-                | 1 -> ([1..7], [1;1;2;4;5;10;11]) ||> Seq.map2(fun ix v -> {ix=ix;pn=[];v=v;takeM2=false})
+                | 1 -> ([1..7], [1;1;2;4;5;10;11]) ||> Seq.map2(fun ix v -> {ix=ix;pn=[];v=v;m2coef=0})
                 | _ -> 
                     getLevelPoints
                     // Sum prev level neighbors
-                    >> Seq.map(fun p -> p, prevs |> Seq.filter(fun pv -> p.pn |> Seq.contains pv.ix) |> Seq.sumBy(fun pv -> pv.v))
+                    >> Seq.map(fw (fun p -> prevs |> Seq.filter(fun pv -> p.pn |> Seq.contains pv.ix) |> Seq.sumBy(fun pv -> pv.v)))
                     // Accumulate same level neighbor = previous point
-                    >> Seq.mapFold(fun (m2, m1) (p, pnsum) ->                
-                        let nsum = pnsum + m1 + (m2 * match p.takeM2 with true -> 1 | _ -> 0) // TODO: Check if there is a better way to do this
-                        let vn = nsum in ({p with v=vn},(m1,vn))
-                    ) (
-                        // Init accumulation with the last two items from prevPrev
-                        prev |> List.map getPointValue |> (@)[0;0] |> List.rev |> (fun v -> Tuple.Create(v.[0], v.[1]))
-                    )
+                    >> Seq.mapFold(fun (m2, m1) (p, pnsum) -> let vn = pnsum+m1+m2*p.m2coef in ({p with v=vn},(m1,vn))) (
+                        // Init accumulation with the last two items from prev
+                        prev |> List.map getPointValue |> (@)[0;0] |> List.rev |> (fun v -> Tuple.Create(v.[0], v.[1])))
                     >> fst <| l
 
             yield! next
