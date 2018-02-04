@@ -9,6 +9,7 @@ let getLevelMax l = 4.*l**2.+2.*l+1.
 let getLevelMin = (+)(-1.) >> getLevelMax >> (+)1.
 
 type Point = {ix:int; pn:seq<int>; v:int; takeM2:bool}
+let getPointValue p = p.v
 
 let getLevelPoints l =
 
@@ -49,14 +50,12 @@ let getLevelPoints l =
 
 let getFirstGreaterThan comparisonValue =
 
-    let rec values levelm1 levelm2 prevLevel =
+    let rec values prev prevPrev prevNum =
         seq {
-            // Include last item from m2 sequence if any
-            let prev = Seq.append (
-                match levelm2 |> Seq.tryLast with
-                | Some i -> [i]
-                | None -> []) levelm1 
-            let l = prevLevel+1
+
+            let l = prevNum+1
+            let prevs = prevPrev @ prev
+            
             let next = 
                 match l with
                 // Treat first level as a special case
@@ -64,19 +63,23 @@ let getFirstGreaterThan comparisonValue =
                 | _ -> 
                     getLevelPoints
                     // Sum prev level neighbors
-                    >> Seq.map(fun p -> p, prev |> Seq.filter(fun pv -> p.pn |> Seq.contains pv.ix) |> Seq.sumBy(fun pv -> pv.v))
+                    >> Seq.map(fun p -> p, prevs |> Seq.filter(fun pv -> p.pn |> Seq.contains pv.ix) |> Seq.sumBy(fun pv -> pv.v))
                     // Accumulate same level neighbor = previous point
                     >> Seq.mapFold(fun (m2, m1) (p, pnsum) ->                
                         let nsum = pnsum + m1 + (m2 * match p.takeM2 with true -> 1 | _ -> 0) // TODO: Check if there is a better way to do this
                         let vn = nsum in ({p with v=vn},(m1,vn))
-                    ) (prev |> getLast 2 |> (fun p -> p.v), prev |> getLast 1 |> (fun p -> p.v))
+                    ) (
+                        // Init accumulation with the last two items from prevPrev
+                        prev |> List.map getPointValue |> (@)[0;0] |> List.rev |> (fun v -> Tuple.Create(v.[0], v.[1]))
+                    )
                     >> fst <| l
 
             yield! next
-            yield! values next levelm1 l
+            printfn "%A" next
+            yield! values (next |> List.ofSeq) prev l
         }  
         
-    values [][] 0 |> Seq.pick (function | p when p.v > comparisonValue -> Some(p.v) | _ -> None)
+    values [] [] 0 |> Seq.pick (function | p when p.v > comparisonValue -> Some(p.v) | _ -> None)
     
 [<EntryPoint; STAThread>]
 let main argv =
