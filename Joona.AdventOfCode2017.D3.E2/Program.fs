@@ -34,8 +34,7 @@ let getLevelPoints l =
     seq{min..max}
     |> Seq.map (fw getPrevNeighbor)
     |> Seq.map (fun (i,n) -> (i,n,{ix=i;pn=[];v=0;m2coef=0}))
-    |> Seq.map (
-        function
+    |> Seq.map (function
         | i,n,p when i=min || isCorner(i-1) -> {p with pn=[n;n+1]; m2coef=1}
         | i,n,p when isCorner i             -> {p with pn=[n]}
         | i,n,p when isCorner(i+1)          -> {p with pn=[n-1;n]}
