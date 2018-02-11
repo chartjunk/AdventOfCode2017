@@ -1,6 +1,6 @@
 ﻿module Checksum
     open System
-    let split (splitter:string) (options:StringSplitOptions) (text:string) = text.Split([|splitter|], options)
+    open StringUtils
     let sheetToSeqs =
         split Environment.NewLine StringSplitOptions.None 
         >> (Seq.map (split "\t" StringSplitOptions.RemoveEmptyEntries >> Seq.map int))

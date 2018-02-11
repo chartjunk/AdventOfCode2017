@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="StringUtils.fs" />
     <Compile Include="Checksum.fs" />
     <Compile Include="ClipboardUtils.fs" />
     <Compile Include="Program.fs" />
