@@ -6,12 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Jump.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Joona.AdventOfCode2017.D2.E1\Joona.AdventOfCode2017.D2.E1.fsproj" />
+    <ProjectReference Include="..\Joona.AdventOfCode2017.D5.E1\Joona.AdventOfCode2017.D5.E1.fsproj" />
   </ItemGroup>
 
   <ItemGroup>
