@@ -9,7 +9,8 @@ let rec getUnbalancedTotalWeights graph wghts n =
     function
     | None -> 
         let weight = item wghts n
-        let children, cTotWeight = item graph n |> Seq.mapFold (fun s c -> getUnbalancedTotalWeights graph wghts c None |> fw (snd3 >> (+)s)) 0
+        let children, cTotWeight = 
+            item graph n |> Seq.mapFold (fun s c -> getUnbalancedTotalWeights graph wghts c None |> fw (snd3 >> (+)s)) 0
         n, weight + cTotWeight,
         match children |> Seq.tryPick thd with
         // This is the unbalanced level.
