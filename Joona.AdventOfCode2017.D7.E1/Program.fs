@@ -1,20 +1,14 @@
 ﻿open System
 open ClipboardUtils
 open StringUtils
+open RecTowers
 
-let flip f a b = f b a
-let getOwnName = splitClean space >> Array.head
-let getUpperNames = 
-    splitCleanList " -> "
-    >> (function
-    | _::x::_ -> x |> splitCleanList ", "
-    | _ -> List.Empty)
+let inputToNameDict =
+    splitClean newline
+    >> Array.map (extractRow >> (fun (n,w,cs) -> n,cs))
+    >> dict
 
 [<EntryPoint; STAThread>]
-let main argv =
-    splitCleanList newline
-    >> (fun lines -> 
-        let upperNames = lines |> List.map getUpperNames |> List.collect id |> set
-        lines |> Seq.map getOwnName |> Seq.find (flip Set.contains upperNames >> not))
-    |> rotateClipboard
+let main argv = 
+    inputToNameDict >> getRoot |> rotateClipboard
     0
