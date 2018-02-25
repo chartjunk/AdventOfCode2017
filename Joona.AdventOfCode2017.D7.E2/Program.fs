@@ -10,12 +10,12 @@ let rec getUnbalancedTotalWeights graph wghts n =
     | None -> 
         let weight = item wghts n
         let children, cTotWeight = 
-            item graph n |> Seq.mapFold (fun s c -> getUnbalancedTotalWeights graph wghts c None |> fw (snd3 >> (+)s)) 0
+            item graph n |> List.mapFold (fun s c -> getUnbalancedTotalWeights graph wghts c None |> fw (snd3 >> (+)s)) 0
         n, weight + cTotWeight,
-        match children |> Seq.tryPick thd with
+        match children |> both (List.map snd3) (List.tryPick thd) with
         // This is the unbalanced level.
-        | None when children |> Seq.distinctBy snd3 |> Seq.length > 1 -> Some(children |> Seq.map(both fst3 snd3))
-        | u -> u
+        | _::x::y::_, None when x<>y -> children |> List.map(both fst3 snd3) |> Some
+        | _, u -> u
     // The unbalanced level already found in a cousin branch.
     | u -> n, 0, u
 
