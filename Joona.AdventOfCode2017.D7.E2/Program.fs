@@ -9,10 +9,12 @@ let rec getUnbalancedTotalWeights graph wghts n =
     function
     | None -> 
         let weight = item wghts n
-        let children, cTotWeight = 
-            item graph n |> List.mapFold (fun s c -> getUnbalancedTotalWeights graph wghts c None |> fw (snd3 >> (+)s)) 0
-        n, weight + cTotWeight,
-        match children |> both (List.map snd3) (List.tryPick thd) with
+        let children, cWeights = 
+            item graph n 
+            |> List.map (getUnbalancedTotalWeights graph wghts c None)
+            |> both List.map id, List.map snd3
+        n, weight + (cWeights |> List.sum),
+        match cWeights, children |> List.tryPick thd with
         // This is the unbalanced level.
         | _::x::y::_, None when x<>y -> children |> List.map(both fst3 snd3) |> Some
         | _, u -> u
