@@ -4,23 +4,18 @@ open ClipboardUtils
 open StringUtils
 open FunctionalUtils
 open CollectionUtils
-open System.Collections.Generic
 
-let rec getUnbalancedChildren graph (wghts:IDictionary<string,int>) n =
+let rec getUnbalancedTotalWeights graph wghts n =
     function
     | None -> 
-        let selfWeight = item wghts n
-        let childWeights = item graph n |> List.map (flip (getUnbalancedChildren graph wghts) None)
-        n, (selfWeight + (childWeights |> List.sumBy snd3)), match childWeights with
-
-        // Unbalanced level already found.
-        | _ when childWeights |> List.exists (thd >> Option.isSome) -> childWeights |> List.find (thd >> Option.isSome) |> thd
-
+        let weight = item wghts n
+        let children, cTotWeight = item graph n |> Seq.mapFold (fun s c -> getUnbalancedTotalWeights graph wghts c None |> fw (snd3 >> (+)s)) 0
+        n, weight + cTotWeight,
+        match children |> Seq.tryPick thd with
         // This is the unbalanced level.
-        | _ when childWeights |> List.distinctBy snd3 |> List.length > 1 -> Some(childWeights |> List.map (both fst3 snd3))
-
-        // Unbalanced level nout yet found.
-        | _ -> None
+        | None when children |> Seq.distinctBy snd3 |> Seq.length > 1 -> Some(children |> Seq.map(both fst3 snd3))
+        | u -> u
+    // The unbalanced level already found in a cousin branch.
     | u -> n, 0, u
 
 [<EntryPoint;STAThread>]
@@ -32,7 +27,12 @@ let main argv =
         (List.map(both fst3 thd) >> dict)
     >> (fun (wghts, graph) ->
                         
-        getUnbalancedChildren graph wghts (getRoot graph) None
+        match getUnbalancedTotalWeights graph wghts (getRoot graph) None |> thd with
+        | Some(u) -> 
+            let (unbW, _), (bW, _) = u |> Seq.countBy snd |> both (Seq.minBy snd) (Seq.maxBy snd)
+            let unbName = u |> Seq.find (snd >> (=) unbW) |> fst
+            bW - unbW + item wghts unbName |> Some
+        | None -> None
     ) 
     >> string
     |> rotateClipboard
