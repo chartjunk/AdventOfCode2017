@@ -11,12 +11,13 @@ let rec getUnbalancedTotalWeights graph wghts n =
         let weight = item wghts n
         let children, cWeights = 
             item graph n 
-            |> List.map (getUnbalancedTotalWeights graph wghts c None)
-            |> both List.map id, List.map snd3
-        n, weight + (cWeights |> List.sum),
-        match cWeights, children |> List.tryPick thd with
+            |> List.map (flip (getUnbalancedTotalWeights graph wghts) None)
+            |> fw (List.map snd3)
+
+        n, weight + (cWeights |> Seq.sum),
+        match cWeights, children |> Seq.tryPick thd with
         // This is the unbalanced level.
-        | _::x::y::_, None when x<>y -> children |> List.map(both fst3 snd3) |> Some
+        | _::x::y::_, None when x<>y -> children |> Seq.map(both fst3 snd3) |> Some
         | _, u -> u
     // The unbalanced level already found in a cousin branch.
     | u -> n, 0, u
