@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net461</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Joona.AdventOfCode2017.D2.E1\Joona.AdventOfCode2017.D2.E1.fsproj" />
+    <ProjectReference Include="..\Joona.AdventOfCode2017.D7.E1\Joona.AdventOfCode2017.D7.E1.fsproj" />
+    <ProjectReference Include="..\Joona.AdventOfCode2017.D8.E1\Joona.AdventOfCode2017.D8.E1.fsproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
+</Project>
