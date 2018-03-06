@@ -2,6 +2,10 @@
 open ClipboardUtils
 open FunctionalUtils
 
+let preprocess =
+    List.filter((<>)'\r')
+    >> List.filter((<>)'\n')
+
 let cancel =
     let rec cancelAcc acc =
         function
@@ -29,8 +33,7 @@ let group =
 [<EntryPoint;STAThread>]
 let main argv =
     Seq.toList
-    >> List.filter((<>)'\r')
-    >> List.filter((<>)'\n')
+    >> preprocess
     >> cancel 
     >> piece 
     >> List.filter((<>)',')
