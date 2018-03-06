@@ -7,9 +7,9 @@ let main argv =
     Seq.toList
     >> preprocess
     >> cancel 
-    >> piece >> snd
-    >> List.filter((<>)',')
-    >> group 0
+    >> piece >> fst
+    >> Seq.collect id
+    >> Seq.length
     >> string
     |> rotateClipboard
     0

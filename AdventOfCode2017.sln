@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Joona.AdventOfCode2017.D1.E1", "Joona.AdventOfCode2017.D1.E1\Joona.AdventOfCode2017.D1.E1.fsproj", "{69E242B1-D128-486F-8748-EDA1391DF17D}"
 EndProject
@@ -33,9 +33,11 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Joona.AdventOfCode2017.D7.E
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Joona.AdventOfCode2017.D8.E1", "Joona.AdventOfCode2017.D8.E1\Joona.AdventOfCode2017.D8.E1.fsproj", "{C1BAFE28-63E1-43D4-BBA9-08F7F424FBEE}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Joona.AdventOfCode2017.D8.E2", "Joona.AdventOfCode2017.D8.E2\Joona.AdventOfCode2017.D8.E2.fsproj", "{882A5E8C-B559-446B-9A56-D2E6A5F84B04}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Joona.AdventOfCode2017.D8.E2", "Joona.AdventOfCode2017.D8.E2\Joona.AdventOfCode2017.D8.E2.fsproj", "{882A5E8C-B559-446B-9A56-D2E6A5F84B04}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Joona.AdventOfCode2017.D9.E1", "Joona.AdventOfCode2017.D9.E1\Joona.AdventOfCode2017.D9.E1.fsproj", "{E5C46B5C-957C-40EC-8305-95C99864618A}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Joona.AdventOfCode2017.D9.E1", "Joona.AdventOfCode2017.D9.E1\Joona.AdventOfCode2017.D9.E1.fsproj", "{E5C46B5C-957C-40EC-8305-95C99864618A}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Joona.AdventOfCode2017.D9.E2", "Joona.AdventOfCode2017.D9.E2\Joona.AdventOfCode2017.D9.E2.fsproj", "{7C972D6F-2821-4116-8868-D02EEDF09F89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,10 @@ Global
 		{E5C46B5C-957C-40EC-8305-95C99864618A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5C46B5C-957C-40EC-8305-95C99864618A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5C46B5C-957C-40EC-8305-95C99864618A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C972D6F-2821-4116-8868-D02EEDF09F89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C972D6F-2821-4116-8868-D02EEDF09F89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C972D6F-2821-4116-8868-D02EEDF09F89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C972D6F-2821-4116-8868-D02EEDF09F89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
