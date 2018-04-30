@@ -5,8 +5,9 @@ open HexGrid
 [<EntryPoint;STAThread>]
 let main _ =
     stringToCoordinates
-    >> Seq.reduce (List.map2 (+))
-    >> coordinateToDistance
+    >> Seq.scan (List.map2 (+)) [0;0;0]
+    >> Seq.map coordinateToDistance
+    >> Seq.max
     >> string
     |> rotateClipboard
     0

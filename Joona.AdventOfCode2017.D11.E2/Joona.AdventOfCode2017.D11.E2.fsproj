@@ -6,13 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="HexGrid.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Joona.AdventOfCode2017.D2.E1\Joona.AdventOfCode2017.D2.E1.fsproj" />
     <ProjectReference Include="..\Joona.AdventOfCode2017.D7.E1\Joona.AdventOfCode2017.D7.E1.fsproj" />
+    <ProjectReference Include="..\Joona.AdventOfCode2017.D11.E1\Joona.AdventOfCode2017.D11.E1.fsproj" />
   </ItemGroup>
 
   <ItemGroup>
