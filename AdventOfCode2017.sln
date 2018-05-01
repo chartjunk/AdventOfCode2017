@@ -47,6 +47,8 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Joona.AdventOfCode2017.D11.
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Joona.AdventOfCode2017.D11.E2", "Joona.AdventOfCode2017.D11.E2\Joona.AdventOfCode2017.D11.E2.fsproj", "{8AB70942-6106-483A-B0FA-1432DE225A05}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Joona.AdventOfCode2017.D12.E1", "Joona.AdventOfCode2017.D12.E1\Joona.AdventOfCode2017.D12.E1.fsproj", "{DED37C16-9545-415A-B63D-1EB64C99ABB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +143,10 @@ Global
 		{8AB70942-6106-483A-B0FA-1432DE225A05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AB70942-6106-483A-B0FA-1432DE225A05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AB70942-6106-483A-B0FA-1432DE225A05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DED37C16-9545-415A-B63D-1EB64C99ABB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DED37C16-9545-415A-B63D-1EB64C99ABB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DED37C16-9545-415A-B63D-1EB64C99ABB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DED37C16-9545-415A-B63D-1EB64C99ABB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
