@@ -11,9 +11,10 @@ let main _ =
         l
         |> Seq.map fst
         |> Seq.fold (fun s id -> 
-            match s with
-            | (union,_) when union |> Set.contains id -> s
-            | (union,c) -> union |> Set.union (getAreaForId id m), c+1) (set[], 0)
+            match s with            
+            | (union, c) when union |> Set.contains id |> not -> 
+                union |> Set.union (getAreaForId id m), c+1
+            | _ -> s) (set[], 0)
     >> snd
     >> string
     |> rotateClipboard
