@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Pipe.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
