@@ -12,7 +12,7 @@ let main _ =
         |> Seq.map fst
         |> Seq.fold (flip (fun id -> 
             function       
-            | (union, c) when union |> Set.contains id |> not -> union |> Set.union (getAreaForId id m), c+1
+            | (union, c) when not(Set.contains id union) -> Set.union (getAreaForId m id) union, c+1
             | s -> s)) (set[], 0)
     >> snd
     >> string

@@ -7,7 +7,7 @@ open FunctionalUtils
 let main _ =
     stringToList
     >> Map.ofList
-    >> getAreaForId 0
+    >> flip getAreaForId 0
     >> Set.count
     >> string
     |> rotateClipboard

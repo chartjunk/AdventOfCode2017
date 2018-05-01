@@ -10,9 +10,9 @@
             >> List.map int
             >> fun (id::conn) -> id, conn)
 
-    let getAreaForId id (m:Map<int,List<int>>) =
-        let rec area (passed:Set<int>) =
+    let getAreaForId m =
+        let rec area passed =
             function
-            | id when passed.Contains id -> passed
-            | id -> m.[id] |> List.fold area (Set.add id passed)
-        area Set.empty id
+            | id when not(Set.contains id passed) -> Map.find id m |> List.fold area (Set.add id passed)
+            | _ -> passed
+        area Set.empty
